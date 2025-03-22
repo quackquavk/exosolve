@@ -42,7 +42,7 @@ export default function ParallaxCards() {
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-20">
           <div>
-            <h2 className="text-4xl md:text-3xl font-bold mb-4">
+            <h2 className="text-4xl md:text-3xl font-thin mb-4">
               Enjoy <span className="text-[#4ade80]">tangible results</span>
             </h2>
           </div>
@@ -58,7 +58,7 @@ export default function ParallaxCards() {
             className="bg-black p-8 aspect-square flex flex-col justify-center"
             style={getParallaxStyle(0)}
           >
-            <h3 className="text-6xl md:text-7xl font-bold mb-4">99%</h3>
+            <h3 className="text-6xl md:text-7xl font-medium mb-4">99%</h3>
             <p className="text-gray-300">
               faster teacher guide creation process – from 4 hours to 45 sec
             </p>
@@ -68,7 +68,7 @@ export default function ParallaxCards() {
             className="bg-black p-8 aspect-square flex flex-col justify-center md:mt-16"
             style={getParallaxStyle(1)}
           >
-            <h3 className="text-6xl md:text-7xl font-bold mb-4">2x</h3>
+            <h3 className="text-6xl md:text-7xl font-medium mb-4">2x</h3>
             <p className="text-gray-300">
               faster invoice approval process – cut down from 4 to 2 days
             </p>
@@ -78,7 +78,7 @@ export default function ParallaxCards() {
             className="bg-black p-8 aspect-square flex flex-col justify-center md:mt-32"
             style={getParallaxStyle(2)}
           >
-            <h3 className="text-6xl md:text-7xl font-bold mb-4">60%</h3>
+            <h3 className="text-6xl md:text-7xl font-medium mb-4">60%</h3>
             <p className="text-gray-300">
               more user engagement with hyper-personalization for a proptech
             </p>
@@ -88,7 +88,7 @@ export default function ParallaxCards() {
             className="bg-black p-8 aspect-square flex flex-col justify-center md:mt-48"
             style={getParallaxStyle(3)}
           >
-            <h3 className="text-6xl md:text-7xl font-bold mb-4">77%</h3>
+            <h3 className="text-6xl md:text-7xl font-medium mb-4">77%</h3>
             <p className="text-gray-300">
               faster page speed for a meal delivery app
             </p>

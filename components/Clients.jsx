@@ -1,31 +1,51 @@
-"use client";
-import Image from "next/image";
-import { testimonials } from "@/constants";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { TestimonialCard } from "./TestimonialCard";
+"use client"
+import Image from "next/image"
+import { testimonials } from "@/constants"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef } from "react"
+import { TestimonialCard } from "./TestimonialCard"
+
 export default function Clients() {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef(null)
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768
 
   // Setup scroll tracking for the section
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end center"],
-  });
+  })
 
   return (
     <div className="bg-[#121212] text-white py-16">
-      <div className="mx-auto w-full" style={{ 
-        maxWidth: 'var(--max-width-desktop)',
-        padding: '0 var(--container-padding-mobile)',
-      }}>
-        <h2 className="text-3xl md:text-4xl font-medium mb-16 text-center md:text-left">
+      <div
+        className="mx-auto w-full"
+        style={{
+          maxWidth: "var(--max-width-desktop)",
+          padding: "0 var(--container-padding-mobile)",
+        }}
+      >
+        <h2 className="text-3xl md:text-4xl font-medium mb-8 md:mb-16 text-center md:text-left">
           Check out our <span className="text-green-500">clients' words</span>
         </h2>
 
-        <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-[200px]">
+        {/* Mobile view: horizontal scrolling */}
+        <div
+          className="md:hidden overflow-x-auto pb-6 -mx-4 px-4"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <div className="flex space-x-4" style={{ minWidth: "min-content" }}>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="min-w-[280px] max-w-[85vw] flex-shrink-0">
+                <TestimonialCard testimonial={testimonial} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop view: grid with parallax */}
+        <div ref={sectionRef} className="hidden md:grid md:grid-cols-2 gap-8 pb-[200px]">
           {testimonials.map((testimonial, index) => {
-            const isLeftColumn = index % 2 === 0 && typeof window !== 'undefined' && window.innerWidth >= 768;
+            const isLeftColumn = index % 2 === 0
             return isLeftColumn ? (
               <ParallaxTestimonialCard
                 key={index}
@@ -35,12 +55,17 @@ export default function Clients() {
               />
             ) : (
               <TestimonialCard key={index} testimonial={testimonial} />
-            );
+            )
           })}
         </div>
       </div>
 
       <style jsx>{`
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .overflow-x-auto::-webkit-scrollbar {
+          display: none;
+        }
+        
         @media (min-width: 768px) {
           div[style] {
             padding: 0 var(--container-padding-tablet);
@@ -53,16 +78,12 @@ export default function Clients() {
         }
       `}</style>
     </div>
-  );
+  )
 }
 
 // Parallax testimonial card for left column
 function ParallaxTestimonialCard({ testimonial, scrollYProgress, index }) {
-  const y = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [200, 0]
-  );
+  const y = useTransform(scrollYProgress, [0, 1], [200, 0])
 
   return (
     <motion.div
@@ -80,7 +101,7 @@ function ParallaxTestimonialCard({ testimonial, scrollYProgress, index }) {
     >
       <div className="mb-8 h-10">
         <Image
-          src={testimonial.logo}
+          src={testimonial.logo || "/placeholder.svg"}
           alt="Company logo"
           width={120}
           height={40}
@@ -92,7 +113,7 @@ function ParallaxTestimonialCard({ testimonial, scrollYProgress, index }) {
         <div className="mr-4">
           {testimonial.author.image ? (
             <Image
-              src={testimonial.author.image}
+              src={testimonial.author.image || "/placeholder.svg"}
               alt={testimonial.author.name}
               width={60}
               height={60}
@@ -108,5 +129,6 @@ function ParallaxTestimonialCard({ testimonial, scrollYProgress, index }) {
         </div>
       </div>
     </motion.div>
-  );
+  )
 }
+

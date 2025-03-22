@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 // Dummy data for service items
 const serviceItems = [
@@ -35,130 +35,164 @@ const serviceItems = [
     title: "Scale",
     description: "Gain flexibility to adjust and expland on the fly",
   },
-];
+]
 
 export default function ScrollFocusSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef(null);
-  const topElementRef = useRef(null);
-  const bottomElementRef = useRef(null);
-  const scrollAccumulator = useRef(0);
-  const isScrolling = useRef(false);
-  const lastScrollDirection = useRef(0);
-  const [isFullyVisible, setIsFullyVisible] = useState(false);
-  const [topVisible, setTopVisible] = useState(false);
-  const [bottomVisible, setBottomVisible] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0)
+  const containerRef = useRef(null)
+  const topElementRef = useRef(null)
+  const bottomElementRef = useRef(null)
+  const scrollAccumulator = useRef(0)
+  const isScrolling = useRef(false)
+  const lastScrollDirection = useRef(0)
+  const [isFullyVisible, setIsFullyVisible] = useState(false)
+  const [topVisible, setTopVisible] = useState(false)
+  const [bottomVisible, setBottomVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const scrollContainerRef = useRef(null)
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+    }
+  }, [])
 
   // Set up intersection observer to check if both elements are visible
   useEffect(() => {
     const options = {
       threshold: 0.8, // Consider fully visible when 80% of each element is in view
-    };
+    }
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.target.id === 'top-element') {
-          setTopVisible(entry.isIntersecting);
-        } else if (entry.target.id === 'bottom-element') {
-          setBottomVisible(entry.isIntersecting);
+      entries.forEach((entry) => {
+        if (entry.target.id === "top-element") {
+          setTopVisible(entry.isIntersecting)
+        } else if (entry.target.id === "bottom-element") {
+          setBottomVisible(entry.isIntersecting)
         }
-      });
-    }, options);
+      })
+    }, options)
 
     if (topElementRef.current) {
-      observer.observe(topElementRef.current);
+      observer.observe(topElementRef.current)
     }
     if (bottomElementRef.current) {
-      observer.observe(bottomElementRef.current);
+      observer.observe(bottomElementRef.current)
     }
 
     return () => {
       if (topElementRef.current) {
-        observer.unobserve(topElementRef.current);
+        observer.unobserve(topElementRef.current)
       }
       if (bottomElementRef.current) {
-        observer.unobserve(bottomElementRef.current);
+        observer.unobserve(bottomElementRef.current)
       }
-    };
-  }, []);
+    }
+  }, [])
 
   // Update isFullyVisible when either top or bottom visibility changes
   useEffect(() => {
-    setIsFullyVisible(topVisible && bottomVisible);
-  }, [topVisible, bottomVisible]);
+    setIsFullyVisible(topVisible && bottomVisible)
+  }, [topVisible, bottomVisible])
 
+  // Scroll handling for desktop
   useEffect(() => {
+    if (isMobile) return // Skip for mobile
+
     const handleWheel = (e) => {
-      if (!isFullyVisible) return;
+      if (!isFullyVisible) return
 
-      lastScrollDirection.current = e.deltaY > 0 ? 1 : -1;
+      lastScrollDirection.current = e.deltaY > 0 ? 1 : -1
 
-      if (
-        (activeIndex === 0 && e.deltaY < 0) ||
-        (activeIndex === serviceItems.length - 1 && e.deltaY > 0)
-      ) {
-        return;
+      if ((activeIndex === 0 && e.deltaY < 0) || (activeIndex === serviceItems.length - 1 && e.deltaY > 0)) {
+        return
       }
 
       // Prevent default for internal navigation
-      e.preventDefault();
+      e.preventDefault()
 
-      if (isScrolling.current) return;
+      if (isScrolling.current) return
 
       // Accumulate scroll delta
-      scrollAccumulator.current += e.deltaY;
+      scrollAccumulator.current += e.deltaY
 
       // Determine direction and change focus with a threshold
       if (Math.abs(scrollAccumulator.current) >= 50) {
-        const direction = scrollAccumulator.current > 0 ? 1 : -1;
+        const direction = scrollAccumulator.current > 0 ? 1 : -1
 
         setActiveIndex((prevIndex) => {
-          const newIndex = prevIndex + direction;
+          const newIndex = prevIndex + direction
           // Ensure index stays within bounds
-          if (newIndex < 0) return 0;
-          if (newIndex >= serviceItems.length) return serviceItems.length - 1;
-          return newIndex;
-        });
+          if (newIndex < 0) return 0
+          if (newIndex >= serviceItems.length) return serviceItems.length - 1
+          return newIndex
+        })
 
         // Reset accumulator and set scrolling flag
-        scrollAccumulator.current = 0;
-        isScrolling.current = true;
+        scrollAccumulator.current = 0
+        isScrolling.current = true
 
         // Debounce to prevent rapid scrolling
         setTimeout(() => {
-          isScrolling.current = false;
-        }, 500);
+          isScrolling.current = false
+        }, 500)
       }
-    };
+    }
 
-    const element = containerRef.current;
+    const element = containerRef.current
     if (element) {
-      element.addEventListener("wheel", handleWheel, { passive: false });
+      element.addEventListener("wheel", handleWheel, { passive: false })
     }
 
     return () => {
       if (element) {
-        element.removeEventListener("wheel", handleWheel);
+        element.removeEventListener("wheel", handleWheel)
       }
-    };
-  }, [activeIndex, isFullyVisible]);
+    }
+  }, [activeIndex, isFullyVisible, isMobile])
 
   // Handle keyboard navigation
   useEffect(() => {
+    if (isMobile) return // Skip for mobile
+
     const handleKeyDown = (e) => {
       // Only handle keyboard events when component is fully visible
-      if (!isFullyVisible) return;
+      if (!isFullyVisible) return
 
       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
-        setActiveIndex((prev) => Math.min(prev + 1, serviceItems.length - 1));
+        setActiveIndex((prev) => Math.min(prev + 1, serviceItems.length - 1))
       } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
-        setActiveIndex((prev) => Math.max(prev - 1, 0));
+        setActiveIndex((prev) => Math.max(prev - 1, 0))
       }
-    };
+    }
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isFullyVisible]);
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [isFullyVisible, isMobile])
+
+  // Scroll to active item on mobile
+  useEffect(() => {
+    if (!isMobile || !scrollContainerRef.current) return
+
+    const container = scrollContainerRef.current
+    const activeItem = container.querySelector(`[data-index="${activeIndex}"]`)
+
+    if (activeItem) {
+      activeItem.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      })
+    }
+  }, [activeIndex, isMobile])
 
   // Animation variants for items
   const itemVariants = {
@@ -174,7 +208,7 @@ export default function ScrollFocusSection() {
       opacity: 0.7,
       transition: { duration: 0.3 },
     },
-  };
+  }
 
   // Improved text animation variants
   const textVariants = {
@@ -198,7 +232,7 @@ export default function ScrollFocusSection() {
         opacity: { duration: 0.2 },
       },
     }),
-  };
+  }
 
   // Description animation variants
   const descriptionVariants = {
@@ -220,104 +254,128 @@ export default function ScrollFocusSection() {
       opacity: 0,
       transition: { duration: 0.2 },
     },
-  };
+  }
 
   return (
     <section
       ref={containerRef}
-      className="bg-[#1a1d20] text-white h-screen flex items-center overflow-hidden relative"
+      className="bg-[#1a1d20] text-white min-h-screen md:h-screen flex items-center overflow-hidden relative py-16 md:py-0"
     >
       {/* Top element with ID */}
-      <div 
-        ref={topElementRef}
-        id="top-element"
-        className="absolute top-[10%] left-0 w-full h-10 bg-transparent"
-      />
-      
-      <div className="mx-auto w-full" style={{ 
-        maxWidth: 'var(--max-width-desktop)',
-        padding: '0 var(--container-padding-mobile)',
-      }}>
+      <div ref={topElementRef} id="top-element" className="absolute top-[10%] left-0 w-full h-10 bg-transparent" />
+
+      <div
+        className="mx-auto w-full"
+        style={{
+          maxWidth: "var(--max-width-desktop)",
+          padding: "0 var(--container-padding-mobile)",
+        }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column - Heading and Services */}
-          <div className="space-y-16">
+          <div className="space-y-8 md:space-y-16">
             {/* Heading */}
             <h2 className="text-3xl md:text-4xl font-light leading-tight">
-              Leverage our full digital{" "}
-              <span className="text-[#2ecc71] font-normal">
-                product expertise
-              </span>
+              Leverage our full digital <span className="text-[#2ecc71] font-normal">product expertise</span>
             </h2>
 
-            {/* Services List */}
-            <div className="">
-              {serviceItems.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  className={`group cursor-pointer py-6 md:py-10 pl-6 flex items-center w-fit pr-10 ${index === activeIndex ? "bg-[#000000] text-white " : ""}`}
-                  variants={itemVariants}
-                  initial="inactive"
-                  animate={index === activeIndex ? "active" : "inactive"}
-                  whileHover={{ opacity: index === activeIndex ? 1 : 0.9 }}
-                  onClick={() => setActiveIndex(index)}
-                  suppressHydrationWarning
-                >
-                  <div className="flex items-center gap-4">
-                    <motion.span
-                      className="text-sm font-medium"
-                      animate={{
-                        color: index === activeIndex ? "#2ecc71" : "#9ca3af",
-                      }}
-                      transition={{ duration: 0.3 }}
-                      suppressHydrationWarning
+            {/* Mobile Services List - Horizontal Scrolling */}
+            {isMobile && (
+              <div
+                ref={scrollContainerRef}
+                className="overflow-x-auto -mx-4 px-4 pb-4"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              >
+                <div className="flex space-x-4" style={{ minWidth: "min-content" }}>
+                  {serviceItems.map((item, index) => (
+                    <div
+                      key={item.id}
+                      data-index={index}
+                      className={`flex-shrink-0 min-w-[200px] max-w-[85vw] cursor-pointer p-4 ${
+                        index === activeIndex ? "bg-[#000000] text-white" : ""
+                      }`}
+                      onClick={() => setActiveIndex(index)}
                     >
-                      {item.number}
-                    </motion.span>
-                    <h3 className="text-xl md:text-4xl font-light">
-                      {item.title}
-                    </h3>
-
-                    <AnimatePresence mode="wait">
-                      {index === activeIndex && (
-                        <motion.div
-                          variants={descriptionVariants}
-                          initial="initial"
-                          animate="animate"
-                          exit="exit"
-                          className="overflow-hidden mt-2 pl-8"
-                          suppressHydrationWarning
+                      <div className="flex flex-col gap-2">
+                        <span
+                          className={`text-sm font-medium ${
+                            index === activeIndex ? "text-[#2ecc71]" : "text-gray-400"
+                          }`}
                         >
-                          <p className="text-gray-300 text-md whitespace-nowrap font-thin">
-                            {item.description}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                          {item.number}
+                        </span>
+                        <h3 className="text-xl font-light">{item.title}</h3>
+                        <p className="text-gray-300 text-sm font-thin mt-2">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Desktop Services List */}
+            {!isMobile && (
+              <div className="hidden md:block">
+                {serviceItems.map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    className={`group cursor-pointer py-6 md:py-10 pl-6 flex items-center w-fit pr-10 ${index === activeIndex ? "bg-[#000000] text-white " : ""}`}
+                    variants={itemVariants}
+                    initial="inactive"
+                    animate={index === activeIndex ? "active" : "inactive"}
+                    whileHover={{ opacity: index === activeIndex ? 1 : 0.9 }}
+                    onClick={() => setActiveIndex(index)}
+                    suppressHydrationWarning
+                  >
+                    <div className="flex items-center gap-4">
+                      <motion.span
+                        className="text-sm font-medium"
+                        animate={{
+                          color: index === activeIndex ? "#2ecc71" : "#9ca3af",
+                        }}
+                        transition={{ duration: 0.3 }}
+                        suppressHydrationWarning
+                      >
+                        {item.number}
+                      </motion.span>
+                      <h3 className="text-xl md:text-4xl font-light">{item.title}</h3>
+
+                      <AnimatePresence mode="wait">
+                        {index === activeIndex && (
+                          <motion.div
+                            variants={descriptionVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            className="overflow-hidden mt-2 pl-8"
+                            suppressHydrationWarning
+                          >
+                            <p className="text-gray-300 text-md whitespace-nowrap font-thin">{item.description}</p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Right Column - Description and Illustration */}
           <div className="flex flex-col justify-between h-full relative">
             {/* Description */}
-            <div className="relative h-[200px] overflow-hidden">
+            <div className="relative h-[120px] md:h-[200px] overflow-hidden">
               <div key={activeIndex} className="absolute w-full">
                 <p className="text-gray-300 text-base md:text-lg leading-relaxed font-thin">
-                  Whether you want to consult an idea, add missing
-                  capabili­ties, quickly expand your team, or hand over a
-                  project – we've got you covered with our{" "}
-                  <span className="text-[#2ecc71]">
-                    {serviceItems[activeIndex].title.toLowerCase()}
-                  </span>{" "}
-                  expertise.
+                  Whether you want to consult an idea, add missing capabili­ties, quickly expand your team, or hand over
+                  a project – we've got you covered with our{" "}
+                  <span className="text-[#2ecc71]">{serviceItems[activeIndex].title.toLowerCase()}</span> expertise.
                 </p>
               </div>
             </div>
 
             {/* Illustration */}
-            <div className="relative h-64 md:h-80 lg:h-96 mt-auto">
+            <div className="relative h-48 md:h-80 lg:h-96 mt-auto">
               <motion.img
                 src="/placeholder.svg?height=400&width=500"
                 alt="Digital product layers illustration"
@@ -335,13 +393,18 @@ export default function ScrollFocusSection() {
       </div>
 
       {/* Bottom element with ID */}
-      <div 
+      <div
         ref={bottomElementRef}
         id="bottom-element"
         className="absolute bottom-[10%] left-0 w-full h-10 bg-transparent"
       />
 
       <style jsx>{`
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .overflow-x-auto::-webkit-scrollbar {
+          display: none;
+        }
+        
         @media (min-width: 768px) {
           div[style] {
             padding: 0 var(--container-padding-tablet);
@@ -354,5 +417,6 @@ export default function ScrollFocusSection() {
         }
       `}</style>
     </section>
-  );
+  )
 }
+
