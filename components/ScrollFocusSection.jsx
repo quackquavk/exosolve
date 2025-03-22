@@ -260,14 +260,16 @@ export default function ScrollFocusSection() {
                   animate={index === activeIndex ? "active" : "inactive"}
                   whileHover={{ opacity: index === activeIndex ? 1 : 0.9 }}
                   onClick={() => setActiveIndex(index)}
+                  suppressHydrationWarning
                 >
-                  <div className="flex items-center gap-4 ">
+                  <div className="flex items-center gap-4">
                     <motion.span
                       className="text-sm font-medium"
                       animate={{
                         color: index === activeIndex ? "#2ecc71" : "#9ca3af",
                       }}
                       transition={{ duration: 0.3 }}
+                      suppressHydrationWarning
                     >
                       {item.number}
                     </motion.span>
@@ -283,6 +285,7 @@ export default function ScrollFocusSection() {
                           animate="animate"
                           exit="exit"
                           className="overflow-hidden mt-2 pl-8"
+                          suppressHydrationWarning
                         >
                           <p className="text-gray-300 text-md whitespace-nowrap font-thin">
                             {item.description}
@@ -324,6 +327,7 @@ export default function ScrollFocusSection() {
                   scale: 1 + activeIndex * 0.02,
                 }}
                 transition={{ type: "spring", stiffness: 100 }}
+                suppressHydrationWarning
               />
             </div>
           </div>

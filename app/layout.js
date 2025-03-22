@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={geologica.className}>{children}</body>
+      <body suppressHydrationWarning className={geologica.className}>{children}</body>
     </html>
   );
 }

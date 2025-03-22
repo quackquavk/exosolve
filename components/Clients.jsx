@@ -25,13 +25,7 @@ export default function Clients() {
 
         <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-[200px]">
           {testimonials.map((testimonial, index) => {
-            // Apply parallax effect only to left column items (even indexes)
-            const isLeftColumn =
-              index % 2 === 0 &&
-              typeof window !== undefined &&
-              window.innerWidth >= 768;
-
-            // Create a TestimonialCard component
+            const isLeftColumn = index % 2 === 0 && typeof window !== 'undefined' && window.innerWidth >= 768;
             return isLeftColumn ? (
               <ParallaxTestimonialCard
                 key={index}
@@ -62,16 +56,12 @@ export default function Clients() {
   );
 }
 
-
-
 // Parallax testimonial card for left column
 function ParallaxTestimonialCard({ testimonial, scrollYProgress, index }) {
-  // Transform scroll progress into Y position
-  // Start 100px below final position and move up as user scrolls
   const y = useTransform(
     scrollYProgress,
     [0, 1],
-    [200, 0] // Start 100px below, end aligned with right column
+    [200, 0]
   );
 
   return (
@@ -79,14 +69,14 @@ function ParallaxTestimonialCard({ testimonial, scrollYProgress, index }) {
       className="bg-[#1E2023] p-8"
       style={{
         y,
-        willChange: "transform", // Performance optimization
+        willChange: "transform",
       }}
-      // Use spring physics for smooth motion
       transition={{
         type: "spring",
         stiffness: 100,
         damping: 20,
       }}
+      suppressHydrationWarning
     >
       <div className="mb-8 h-10">
         <Image
