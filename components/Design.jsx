@@ -1,3 +1,4 @@
+'use client'
 import CaseStudyGrid from "./CaseStudiesGrid";
 
 export default function Page() {
@@ -59,12 +60,30 @@ export default function Page() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] py-12 px-4 md:py-16 md:px-6">
-    <div className="mx-auto max-w-[75%]">
-    <h1 className="text-3xl text-white mb-[10vh]">Design, Engineering and <span className="text-[#00D563] ">Applied AI</span></h1>
+    <main className="min-h-screen bg-[#0A0A0A] py-12 md:py-16">
+      <div className="mx-auto w-full" style={{ 
+        maxWidth: 'var(--max-width-desktop)',
+        padding: '0 var(--container-padding-mobile)',
+      }}>
+        <h1 className="text-3xl text-white mb-[10vh]">
+          Design, Engineering and <span className="text-[#00D563]">Applied AI</span>
+        </h1>
 
-      <CaseStudyGrid caseStudies={caseStudies} />
-    </div>
-  </main>
+        <CaseStudyGrid caseStudies={caseStudies} />
+      </div>
+
+      <style jsx>{`
+        @media (min-width: 768px) {
+          div[style] {
+            padding: 0 var(--container-padding-tablet);
+          }
+        }
+        @media (min-width: 1024px) {
+          div[style] {
+            padding: 0 var(--container-padding-desktop);
+          }
+        }
+      `}</style>
+    </main>
   );
 }

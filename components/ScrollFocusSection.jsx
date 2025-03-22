@@ -40,35 +40,52 @@ const serviceItems = [
 export default function ScrollFocusSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
+  const topElementRef = useRef(null);
+  const bottomElementRef = useRef(null);
   const scrollAccumulator = useRef(0);
   const isScrolling = useRef(false);
   const lastScrollDirection = useRef(0);
   const [isFullyVisible, setIsFullyVisible] = useState(false);
+  const [topVisible, setTopVisible] = useState(false);
+  const [bottomVisible, setBottomVisible] = useState(false);
 
-  // Set up intersection observer to check if component is fully visible
+  // Set up intersection observer to check if both elements are visible
   useEffect(() => {
     const options = {
-      threshold: 0.8, // Consider fully visible when 95% of the component is in view
+      threshold: 0.8, // Consider fully visible when 80% of each element is in view
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        setIsFullyVisible(
-          entry.isIntersecting && entry.intersectionRatio >= 0.8
-        );
+      entries.forEach(entry => {
+        if (entry.target.id === 'top-element') {
+          setTopVisible(entry.isIntersecting);
+        } else if (entry.target.id === 'bottom-element') {
+          setBottomVisible(entry.isIntersecting);
+        }
       });
     }, options);
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (topElementRef.current) {
+      observer.observe(topElementRef.current);
+    }
+    if (bottomElementRef.current) {
+      observer.observe(bottomElementRef.current);
     }
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (topElementRef.current) {
+        observer.unobserve(topElementRef.current);
+      }
+      if (bottomElementRef.current) {
+        observer.unobserve(bottomElementRef.current);
       }
     };
   }, []);
+
+  // Update isFullyVisible when either top or bottom visibility changes
+  useEffect(() => {
+    setIsFullyVisible(topVisible && bottomVisible);
+  }, [topVisible, bottomVisible]);
 
   useEffect(() => {
     const handleWheel = (e) => {
@@ -208,9 +225,19 @@ export default function ScrollFocusSection() {
   return (
     <section
       ref={containerRef}
-      className="bg-[#1a1d20] text-white h-screen flex items-center overflow-hidden"
+      className="bg-[#1a1d20] text-white h-screen flex items-center overflow-hidden relative"
     >
-      <div className="max-w-[75%] mx-auto w-full px-4 md:px-8 lg:px-16">
+      {/* Top element with ID */}
+      <div 
+        ref={topElementRef}
+        id="top-element"
+        className="absolute top-[10%] left-0 w-full h-10 bg-transparent"
+      />
+      
+      <div className="mx-auto w-full" style={{ 
+        maxWidth: 'var(--max-width-desktop)',
+        padding: '0 var(--container-padding-mobile)',
+      }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column - Heading and Services */}
           <div className="space-y-16">
@@ -302,6 +329,26 @@ export default function ScrollFocusSection() {
           </div>
         </div>
       </div>
+
+      {/* Bottom element with ID */}
+      <div 
+        ref={bottomElementRef}
+        id="bottom-element"
+        className="absolute bottom-[10%] left-0 w-full h-10 bg-transparent"
+      />
+
+      <style jsx>{`
+        @media (min-width: 768px) {
+          div[style] {
+            padding: 0 var(--container-padding-tablet);
+          }
+        }
+        @media (min-width: 1024px) {
+          div[style] {
+            padding: 0 var(--container-padding-desktop);
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -208,3 +208,99 @@ export const megaMenuData = {
     },
   },
 };
+
+
+export const testimonials= [
+  {
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/keller-williams.svg", // Replace with actual KW logo
+    text: "Exosolve has been the best agency we've worked with so far.",
+    author: {
+      name: "Adi Pavlovic",
+      title: "Director of Innovation",
+      image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
+    },
+  },
+  {
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/total-processing.svg", // Replace with actual Merck logo
+    text: "Excellence and speed. It's rare to get both, and Exosolve delivers.",
+    author: {
+      name: "Mark Greiner",
+      title: "Digital Innovation Manager",
+      image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
+    },
+  },
+  {
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg", // Replace with actual Candis logo
+    text: "Our first KPI is the time to hire, and Exosolve provides candidates very fast.",
+    author: {
+      name: "John Doe", // Name not visible in screenshot
+      title: "HR Manager", 
+      image:"https://www.netguru.com/hs-fs/hubfs/_N19%20Modules/Homepage/Photos/testimonials/Marco_Deseri.jpg?width=70&height=70"
+    },
+  },
+  {
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg", // Replace with actual Total Processing logo
+    text: "It doesn't feel like an external team, it feels like we're just working together.",
+    author: {
+      name: "Dally Singh",
+      title: "Chief Product Officer",
+      image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
+    },
+  },
+  {
+      logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg", // Replace with actual Total Processing logo
+      text: "It doesn't feel like an external team, it feels like we're just working together.",
+      author: {
+        name: "Dally Singh",
+        title: "Chief Product Officer",
+        image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
+      },
+    },
+    {
+      logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg", // Replace with actual Total Processing logo
+      text: "It doesn't feel like an external team, it feels like we're just working together.",
+      author: {
+        name: "Dally Singh",
+        title: "Chief Product Officer",
+        image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
+      },
+    },
+]
+
+
+export  const topRowCompanies = ["ikea", "ubs", "volkswagen", "zabka", "olx", "spendesk"]
+export const bottomRowCompanies = ["merck", "careem", "solaris", "moonfare", "kellerwilliams", "salzburg"]
+
+
+export const serviceItems = [
+  {
+    id: 1,
+    number: "01",
+    title: "Ideate",
+    description: "Identify, shape and validate your product idea",
+  },
+  {
+    id: 2,
+    number: "02",
+    title: "Design",
+    description: "Create beautiful, intuitive user experiences",
+  },
+  {
+    id: 3,
+    number: "03",
+    title: "Develop",
+    description: "Bring products to life with world-class engineering",
+  },
+  {
+    id: 4,
+    number: "04",
+    title: "Maintain",
+    description: "Safeguard your product's quality and reliability",
+  },
+  {
+    id: 5,
+    number: "05",
+    title: "Scale",
+    description: "Gain flexibility to adjust and expand on the fly",
+  },
+];

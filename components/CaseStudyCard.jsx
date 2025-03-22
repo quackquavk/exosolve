@@ -15,7 +15,7 @@ export default function CaseStudyCard({
   });
   return (
     <div
-      className={`group relative min-w-[20vw] max-w-[25vw]  overflow-hidden  ${className}`}
+      className={`group relative min-w-[20vw] md:max-w-[25vw]  overflow-hidden  ${className}`}
       ref={cardRef}
     >
       {/* Background Image with hover effect */}

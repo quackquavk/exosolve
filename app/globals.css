@@ -4,9 +4,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+:root {
+  /* Standard widths */
+  --max-width-desktop: 1280px;  /* equivalent to max-w-7xl */
+  --container-padding-mobile: 1.5rem;  /* 24px */
+  --container-padding-tablet: 2rem;    /* 32px */
+  --container-padding-desktop: 4rem;   /* 64px */
+}
+
 body{
   overflow-x: hidden;
   scrollbar-width: thin;
+  scrollbar-color: green yellow;
+  --webkit-scrollbar-width: thin;
+  --webkit-scrollbar-color: green yellow;
 }
 parallax {
   position: relative;
@@ -30,4 +41,17 @@ parallax {
 
 .parallax__foreground {
   transform: translateZ(0);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+body{
+  overflow-x: hidden;
 }

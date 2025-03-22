@@ -1,13 +1,47 @@
+'use client'
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const Hero = () => {
+  const heroRef = useRef(null);
+  const contentRef = useRef(null);
+  const guideCardRef = useRef(null);
+
+  useEffect(() => {
+    if (!heroRef.current || !contentRef.current || !guideCardRef.current) return;
+
+    const handleParallax = () => {
+      const scrollPosition = window.scrollY;
+      
+      if (contentRef.current) {
+        contentRef.current.style.transform = `translateY(${scrollPosition * 0.7}px)`;
+      }
+      
+      if (guideCardRef.current) {
+        guideCardRef.current.style.transform = `translateY(${scrollPosition * 1}px)`;
+      }
+    };
+
+    window.addEventListener("scroll", handleParallax);
+    
+    return () => {
+      window.removeEventListener("scroll", handleParallax);
+    };
+  }, []);
+
   return (
-    <main className="flex-grow bg-gradient-to-br from-black  to-gray-800 overflow-hidden relative items-center justify-center min-h-screen">
-      <div className="relative min-h-screen flex flex-col justify-center items-start px-6 md:px-[15%] ">
-        <h1 className="text-5xl md:text-[92px] mb-20 md:mb-32 z-10 font-thin">
+    <main 
+      ref={heroRef}
+      className="flex-grow bg-gradient-to-br from-black to-gray-800 overflow-hidden relative items-center justify-center min-h-screen"
+    >
+      {/* Main content block with parallax effect */}
+      <div 
+        ref={contentRef}
+        className="relative min-h-screen flex flex-col justify-center items-start px-6 md:px-[15%] "
+      >
+        <h1 className="text-5xl md:text-[92px] mb-20 md:mb-32 z-10 font-thin mt-30">
           <span className="text-green-400">Accelerate</span>{" "}
           <span className="text-white">digital</span>
         </h1>
@@ -54,8 +88,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Guide Card */}
-      <div className="absolute bottom-[0%] md:bottom-[50%]  hidden md:block right-0 z-20 bg-gray-800/90  overflow-hidden w-64">
+      {/* Guide Card with opposite parallax movement */}
+      <div 
+        ref={guideCardRef}
+        className="absolute bottom-[0%] md:bottom-[50%] hidden md:block right-0 z-20 bg-gray-800/90 overflow-hidden w-64"
+      >
         <div className="flex flex-col">
           <Image
             src="/sideimage.webp"

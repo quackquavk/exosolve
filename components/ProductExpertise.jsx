@@ -81,9 +81,12 @@ export default function ProductExpertise() {
   return (
     <section
       ref={containerRef}
-      className="bg-[#1a1d20] text-white py-16 md:py-24 px-4 md:px-8 lg:px-16 overflow-hidden h-screen flex items-center"
+      className="bg-[#1a1d20] text-white py-16 md:py-24 overflow-hidden h-screen flex items-center"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="mx-auto w-full" style={{ 
+        maxWidth: 'var(--max-width-desktop)',
+        padding: '0 var(--container-padding-mobile)',
+      }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column - Heading and Services */}
           <div className="space-y-16">
@@ -153,6 +156,19 @@ export default function ProductExpertise() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (min-width: 768px) {
+          div[style] {
+            padding: 0 var(--container-padding-tablet);
+          }
+        }
+        @media (min-width: 1024px) {
+          div[style] {
+            padding: 0 var(--container-padding-desktop);
+          }
+        }
+      `}</style>
     </section>
   )
 }
