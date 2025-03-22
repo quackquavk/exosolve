@@ -19,7 +19,7 @@ export default function CaseStudyCard({
       ref={cardRef}
     >
       {/* Background Image with hover effect */}
-      <div className="relative aspect-[2.5/3] overflow-hidden">
+      <div className="relative aspect-[2.7/3] overflow-hidden">
         <Image
           src={image || "/placeholder.svg"}
           alt="Case study background"

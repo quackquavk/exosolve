@@ -254,7 +254,7 @@ export default function ScrollFocusSection() {
               {serviceItems.map((item, index) => (
                 <motion.div
                   key={item.id}
-                  className={`group cursor-pointer py-6 md:py-10 pl-6 flex items-center ${index === activeIndex ? "bg-[#000000] text-white" : ""}`}
+                  className={`group cursor-pointer py-6 md:py-10 pl-6 flex items-center w-fit pr-10 ${index === activeIndex ? "bg-[#000000] text-white " : ""}`}
                   variants={itemVariants}
                   initial="inactive"
                   animate={index === activeIndex ? "active" : "inactive"}

@@ -53,7 +53,7 @@ export default function CaseStudyGrid({ caseStudies }) {
   return (
     <div ref={gridRef} className="w-full relative mx-auto bg-black">
       {/* First row - desktop: offset pair */}
-      <div className="grid grid-cols-2 gap-0 mb-48 max-w-5xl mx-auto">
+      <div className="grid grid-cols-2 gap-0 mb-48 max-w-5xl  ">
         <div>
           <CaseStudyCard
             {...caseStudies[0]}
@@ -93,7 +93,7 @@ export default function CaseStudyGrid({ caseStudies }) {
       </div>
 
       {/* Third row - desktop: normal grid */}
-      <div className="grid grid-cols-2 gap-0 mb-48 max-w-5xl mx-auto">
+      <div className="grid grid-cols-2 gap-0 mb-48 max-w-5xl ">
         <div>
           <CaseStudyCard
             {...caseStudies[4]}
