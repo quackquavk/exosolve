@@ -15,7 +15,7 @@ export default function CaseStudyCard({
   });
   return (
     <div
-      className={`group relative min-w-[20vw] md:max-w-[25vw]  overflow-hidden  ${className}`}
+      className={`group relative min-w-[20vw] md:max-w-[25vw]  overflow-hidden  ${className} hover:cursor-pointer`}
       ref={cardRef}
     >
       {/* Background Image with hover effect */}
@@ -35,7 +35,7 @@ export default function CaseStudyCard({
       {/* Content Container */}
       <div className=" inset-0 flex flex-col justify-between">
         {/* Top Section */}
-        <div className="flex items-start justify-between space-x-4 ">
+        <div className="flex items-start justify-between space-x-4 mt-2">
           <Image
             src={companyLogo}
             alt="company logo"
@@ -53,7 +53,7 @@ export default function CaseStudyCard({
           <h2 className="text-xl md:text-2xl group-hover:underline font-medium text-white leading-tight">
             {title}
           </h2>
-          <p className="text-white/90 text-sm leading-relaxed max-w-prose font-thin">
+          <p className="text-white/90 text-md leading-relaxed max-w-prose font-thin">
             {subtitle}
           </p>
         </div>

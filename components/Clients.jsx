@@ -24,8 +24,8 @@ export default function Clients() {
           padding: "0 var(--container-padding-mobile)",
         }}
       >
-        <h2 className="text-3xl md:text-4xl font-medium mb-8 md:mb-16 text-center md:text-left">
-          Check out our <span className="text-green-500">clients' words</span>
+        <h2 className="heading-text mb-8 md:mb-16  text-left">
+          Check out our <span className="green-text">clients' words</span>
         </h2>
 
         {/* Mobile view: horizontal scrolling */}

@@ -2,31 +2,10 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-
+import { cardData } from "@/constants";
 export default function EnhancedParallaxCards() {
   const containerRef = useRef(null);
 
-  const cardData = [
-    {
-      value: "99%",
-      description:
-        "faster teacher guide creation process – from 4 hours to 45 sec",
-    },
-    {
-      value: "2x",
-      description:
-        "faster invoice approval process – cut down from 4 to 2 days",
-    },
-    {
-      value: "60%",
-      description:
-        "more user engagement with hyper-personalization for a proptech",
-    },
-    {
-      value: "77%",
-      description: "faster page speed for a meal delivery app",
-    },
-  ];
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -57,9 +36,9 @@ export default function EnhancedParallaxCards() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-20">
           <div>
-            <h2 className="text-4xl md:text-3xl font-thin mb-4">
+            <h2 className="heading-text font-thin mb-4">
               Enjoy{" "}
-              <span className="text-[#4ade80] font-thin">tangible results</span>
+              <span className="green-text">tangible results</span>
             </h2>
           </div>
           <div>
@@ -83,7 +62,7 @@ export default function EnhancedParallaxCards() {
                 <div
                   suppressHydrationWarning
                   key={card.value}
-                  className={cardClasses}
+                  className={"bg-black min-w-[85vw] sm:min-w-[400px] md:min-w-full h-[300px] flex flex-col justify-center px-8 pt-8 pb-16 snap-center"}
                 >
                   <h3 className="text-6xl md:text-7xl font-thin mb-4">
                     {card.value}

@@ -209,68 +209,85 @@ export const megaMenuData = {
   },
 };
 
-
-export const testimonials= [
+export const testimonials = [
   {
-    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/keller-williams.svg", // Replace with actual KW logo
-    text: "Exosolve has been the best agency we've worked with so far.",
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/keller-williams.svg",
+    text: "Exosolve has been the best recruitment agency we've worked with so far. They quickly provided us with highly skilled Java developers who integrated seamlessly into our team.",
     author: {
       name: "Adi Pavlovic",
       title: "Director of Innovation",
-      image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
+      image:
+        "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70",
     },
   },
   {
-    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/total-processing.svg", // Replace with actual Merck logo
-    text: "Excellence and speed. It's rare to get both, and Exosolve delivers.",
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/total-processing.svg",
+    text: "Exosolve excels in both quality and speed. They provided us with exceptional full stack engineers faster than any other agency we've used.",
     author: {
       name: "Mark Greiner",
       title: "Digital Innovation Manager",
-      image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
+      image:
+        "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70",
     },
   },
   {
-    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg", // Replace with actual Candis logo
-    text: "Our first KPI is the time to hire, and Exosolve provides candidates very fast.",
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg",
+    text: "Time to hire is crucial for us, and Exosolve consistently delivers top-tier Java developers and full stack engineers faster than expected.",
     author: {
-      name: "John Doe", // Name not visible in screenshot
-      title: "HR Manager", 
-      image:"https://www.netguru.com/hs-fs/hubfs/_N19%20Modules/Homepage/Photos/testimonials/Marco_Deseri.jpg?width=70&height=70"
+      name: "John Doe",
+      title: "HR Manager",
+      image:
+        "https://www.netguru.com/hs-fs/hubfs/_N19%20Modules/Homepage/Photos/testimonials/Marco_Deseri.jpg?width=70&height=70",
     },
   },
   {
-    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg", // Replace with actual Total Processing logo
-    text: "It doesn't feel like an external team, it feels like we're just working together.",
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg",
+    text: "The Java developers Exosolve provided integrated seamlessly into our team, as if they were always part of our company.",
     author: {
       name: "Dally Singh",
       title: "Chief Product Officer",
-      image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
+      image:
+        "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70",
     },
   },
   {
-      logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg", // Replace with actual Total Processing logo
-      text: "It doesn't feel like an external team, it feels like we're just working together.",
-      author: {
-        name: "Dally Singh",
-        title: "Chief Product Officer",
-        image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
-      },
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg",
+    text: "Exosolve's candidates are of the highest quality. Every engineer they've placed with us has exceeded our expectations.",
+    author: {
+      name: "Jane Smith",
+      title: "CTO",
+      image:
+        "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70",
     },
-    {
-      logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg", // Replace with actual Total Processing logo
-      text: "It doesn't feel like an external team, it feels like we're just working together.",
-      author: {
-        name: "Dally Singh",
-        title: "Chief Product Officer",
-        image: "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70", // Replace with actual image
-      },
+  },
+  {
+    logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg",
+    text: "The team at Exosolve provided exceptional support throughout the recruitment process, ensuring we found the perfect fit for our needs.",
+    author: {
+      name: "Michael Johnson",
+      title: "Hiring Manager",
+      image:
+        "https://www.netguru.com/hs-fs/hubfs/aleksander-heimrath.1024x1024.jpg?width=70&height=70",
     },
-]
+  },
+];
 
-
-export  const topRowCompanies = ["ikea", "ubs", "volkswagen", "zabka", "olx", "spendesk"]
-export const bottomRowCompanies = ["merck", "careem", "solaris", "moonfare", "kellerwilliams", "salzburg"]
-
+export const topRowCompanies = [
+  "ikea",
+  "ubs",
+  "volkswagen",
+  "zabka",
+  "olx",
+  "spendesk",
+];
+export const bottomRowCompanies = [
+  "merck",
+  "careem",
+  "solaris",
+  "moonfare",
+  "kellerwilliams",
+  "salzburg",
+];
 
 export const serviceItems = [
   {
@@ -302,5 +319,26 @@ export const serviceItems = [
     number: "05",
     title: "Scale",
     description: "Gain flexibility to adjust and expand on the fly",
+  },
+];
+
+export const cardData = [
+  {
+    value: "99%",
+    description:
+      "faster teacher guide creation process – from 4 hours to 45 sec",
+  },
+  {
+    value: "2x",
+    description: "faster invoice approval process – cut down from 4 to 2 days",
+  },
+  {
+    value: "60%",
+    description:
+      "more user engagement with hyper-personalization for a proptech",
+  },
+  {
+    value: "77%",
+    description: "faster page speed for a meal delivery app",
   },
 ];

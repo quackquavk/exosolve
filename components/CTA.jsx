@@ -35,8 +35,8 @@ export default function CTA() {
         className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10"
      
       >
-        <h2 className="text-lg md:text-2xl lg:text-2xl font-thin text-white mb-6 max-w-3xl">
-          Build impactful products <span className="text-green-400">faster</span> than your competition
+        <h2 className="heading-text mb-10">
+          Build impactful products <span className="green-text">faster</span> than your competition
         </h2>
 
         <Button 

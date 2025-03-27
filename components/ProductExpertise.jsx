@@ -91,8 +91,8 @@ export default function ProductExpertise() {
           {/* Left Column - Heading and Services */}
           <div className="space-y-16">
             {/* Heading */}
-            <h2 className="text-3xl md:text-4xl font-light leading-tight">
-              Leverage our full digital <span className="text-[#2ecc71] font-normal">product expertise</span>
+          <h2 className="heading-text">
+              Leverage our full digital <span className="green-text">product expertise</span>
             </h2>
 
             {/* Services List */}

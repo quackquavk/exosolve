@@ -102,8 +102,8 @@ export default function InsightsCards() {
         }}
       >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10 md:mb-20">
-          <h2 className="text-3xl md:text-4xl font-thin">
-            Explore insights <span className="text-[#4ade80]">for acceleration</span>
+          <h2 className="heading-text">
+            Explore insights <span className="green-text">for acceleration</span>
           </h2>
           <Link href="#" className="flex items-center gap-2 text-white hover:text-[#4ade80] transition-colors">
             <span className="font-medium">More disruptive insights</span>

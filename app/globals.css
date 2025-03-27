@@ -15,9 +15,6 @@
 body{
   overflow-x: hidden;
   scrollbar-width: thin;
-  scrollbar-color: green yellow;
-  --webkit-scrollbar-width: thin;
-  --webkit-scrollbar-color: green yellow;
 }
 parallax {
   position: relative;
@@ -54,4 +51,19 @@ parallax {
 
 body{
   overflow-x: hidden;
+}
+
+@layer utilities{
+  .heading-text{
+    @apply text-2xl md:text-3xl text-white font-thin text-start
+  }
+  .subheading-text{
+    @apply  md:text-lg text-white font-thin text-sm
+  }
+  .exosolve-theme{
+    @apply text-[#4ade80]
+  }
+  .green-text{
+    @apply text-[#4ade80] font-thin
+  }
 }

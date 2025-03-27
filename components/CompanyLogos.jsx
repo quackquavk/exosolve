@@ -28,8 +28,8 @@ export default function CompanyLogos() {
       }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-20">
           <div>
-            <h2 className="text-1xl md:text-3xl font-thin mb-4 whitespace-nowrap">
-              Benefit from our <span className="text-[#4ade80]">cross-industry experience</span>
+            <h2 className="heading-text font-thin mb-4 md:whitespace-nowrap">
+              Benefit from our <span className="green-text">cross-industry experience</span>
             </h2>
           </div>
           <div>

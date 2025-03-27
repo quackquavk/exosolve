@@ -42,12 +42,12 @@ export default function ParallaxCards() {
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-20">
           <div>
-            <h2 className="text-4xl md:text-3xl font-thin mb-4">
-              Enjoy <span className="text-[#4ade80]">tangible results</span>
+            <h2 className="heading-text mb-4">
+              Enjoy <span className="green-text">tangible results</span>
             </h2>
           </div>
           <div>
-            <p className="text-lg md:text-xl text-gray-300">
+            <p className="subheading-text">
               Over the years we've created a unique process that delivers exceptional results with blazing-fast efficiency.
             </p>
           </div>

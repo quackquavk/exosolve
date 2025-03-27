@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Company Information */}
           <div>
             <h3 className="text-xl font-bold mb-6">Exosolve S.A</h3>
-            <div className="space-y-2 text-gray-300">
+            <div className="space-y-2 text-gray-300 font-thin">
               <p>Nowe Garbary Office Center</p>
               <p>ul. Małe Garbary 9</p>
               <p>61-756 Poznań, Poland</p>

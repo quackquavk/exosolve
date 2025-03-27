@@ -4,11 +4,13 @@ import { ArrowRight } from "lucide-react"
 import { useEffect, useState } from "react"
 import { megaMenuData } from "@/constants"
 import MegaMenu from "./MegaMenu"
+import { useScroll } from '@/context/ScrollContext';
 
 export default function Header() {
   const [activeMenu, setActiveMenu] = useState(null)
   const [isHovering, setIsHovering] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const { isScrollSectionActive } = useScroll();
 
   const menuItems = [
     { key: "services", label: "Services" },
@@ -42,7 +44,7 @@ export default function Header() {
   }
 
   return (
-    <div className="relative transition-all duration-300">
+    <div className={`relative transition-all duration-300 ${isScrollSectionActive ? 'opacity-0 pointer-events-none' : ''}`}>
       <header
         className={`py-4 w-full z-50 transition-all duration-300 ${
           isScrolled ? "fixed top-0 left-0 right-0 shadow-md bg-black" : "bg-black"

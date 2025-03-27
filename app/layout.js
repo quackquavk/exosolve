@@ -1,3 +1,4 @@
+import { ScrollProvider } from "@/context/ScrollContext";
 import "./globals.css";
 import { Geologica } from "next/font/google";
 
@@ -12,7 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning className={geologica.className}>{children}</body>
+      <body suppressHydrationWarning className={geologica.className}>
+        <ScrollProvider>{children}</ScrollProvider>
+      </body>
     </html>
   );
 }

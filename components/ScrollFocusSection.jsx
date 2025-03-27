@@ -2,41 +2,41 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useScroll } from '@/context/ScrollContext';
 
 // Dummy data for service items
 const serviceItems = [
   {
     id: 1,
     number: "01",
-    title: "Ideate",
-    description: "Identify, shape and validate your product idea",
+    title: "Identify Needs",
+    description: "Understand your team's specific engineering requirements",
   },
   {
     id: 2,
     number: "02",
-    title: "Design",
-    description: "Create beautiful, intuitive user experiences",
+    title: "Source Talent",
+    description: "Find and vet top Java developers and full stack engineers",
   },
   {
     id: 3,
     number: "03",
-    title: "Develop",
-    description: "Bring products to life with world-class engineering",
+    title: "Place Engineers",
+    description: "Connect your team with the right tech talent",
   },
   {
     id: 4,
     number: "04",
-    title: "Maintain",
-    description: "Safeguard your product's quality and realiability",
+    title: "Support Integration",
+    description: "Ensure smooth onboarding and team integration",
   },
   {
     id: 5,
     number: "05",
-    title: "Scale",
-    description: "Gain flexibility to adjust and expland on the fly",
+    title: "Scale Teams",
+    description: "Provide flexibility to expand your engineering capacity",
   },
 ]
-
 export default function ScrollFocusSection() {
   const [activeIndex, setActiveIndex] = useState(0)
   const containerRef = useRef(null)
@@ -50,6 +50,7 @@ export default function ScrollFocusSection() {
   const [bottomVisible, setBottomVisible] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const scrollContainerRef = useRef(null)
+  const { setIsScrollSectionActive } = useScroll();
 
   // Check if we're on mobile
   useEffect(() => {
@@ -102,6 +103,11 @@ export default function ScrollFocusSection() {
   useEffect(() => {
     setIsFullyVisible(topVisible && bottomVisible)
   }, [topVisible, bottomVisible])
+
+  // Update the effect that handles visibility
+  useEffect(() => {
+    setIsScrollSectionActive(topVisible && bottomVisible);
+  }, [topVisible, bottomVisible, setIsScrollSectionActive]);
 
   // Scroll handling for desktop
   useEffect(() => {
@@ -275,8 +281,8 @@ export default function ScrollFocusSection() {
           {/* Left Column - Heading and Services */}
           <div className="space-y-8 md:space-y-16">
             {/* Heading */}
-            <h2 className="text-3xl md:text-4xl font-light leading-tight">
-              Leverage our full digital <span className="text-[#2ecc71] font-normal">product expertise</span>
+            <h2 className="heading-text">
+              Leverage our full digital <span className="green-text">product expertise</span>
             </h2>
 
             {/* Mobile Services List - Horizontal Scrolling */}
@@ -304,7 +310,7 @@ export default function ScrollFocusSection() {
                         >
                           {item.number}
                         </span>
-                        <h3 className="text-xl font-light">{item.title}</h3>
+                        <h3 className="text-xl font-light whitespace-nowrap">{item.title}</h3>
                         <p className="text-gray-300 text-sm font-thin mt-2">{item.description}</p>
                       </div>
                     </div>
@@ -338,7 +344,7 @@ export default function ScrollFocusSection() {
                       >
                         {item.number}
                       </motion.span>
-                      <h3 className="text-xl md:text-4xl font-light">{item.title}</h3>
+                      <h3 className="text-xl md:text-3xl font-light whitespace-nowrap">{item.title}</h3>
 
                       <AnimatePresence mode="wait">
                         {index === activeIndex && (
@@ -362,11 +368,11 @@ export default function ScrollFocusSection() {
           </div>
 
           {/* Right Column - Description and Illustration */}
-          <div className="flex flex-col justify-between h-full relative">
+          <div className="flex flex-col justify-between h-full relative max-w-[40vw]">
             {/* Description */}
             <div className="relative h-[120px] md:h-[200px] overflow-hidden">
               <div key={activeIndex} className="absolute w-full">
-                <p className="text-gray-300 text-base md:text-lg leading-relaxed font-thin">
+                <p className="text-gray-300 text-base md:text-lg leading-relaxed font-thin w-full ml-[50px]">
                   Whether you want to consult an idea, add missing capabili­ties, quickly expand your team, or hand over
                   a project – we've got you covered with our{" "}
                   <span className="text-[#2ecc71]">{serviceItems[activeIndex].title.toLowerCase()}</span> expertise.
