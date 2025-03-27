@@ -1,11 +1,30 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cardData } from "@/constants";
+
 export default function EnhancedParallaxCards() {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Check for mobile device on component mount and window resize
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check immediately
+    checkIfMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener("resize", checkIfMobile);
+    
+    // Clean up event listener
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -51,18 +70,17 @@ export default function EnhancedParallaxCards() {
 
         <div className="flex overflow-x-auto md:grid md:grid-cols-4 gap-8 relative no-scrollbar snap-x snap-mandatory">
           {cardData.map((card, index) => {
-            // Base classes for the card
+            // Base classes for all cards
             const cardClasses = `bg-black min-w-[85vw] sm:min-w-[400px] md:min-w-full h-[300px] flex flex-col justify-center px-8 pt-8 pb-16 snap-center ${
-              index > 0 ? `md:mt-${index * 16}` : ""
+              !isMobile && index > 0 ? `md:mt-${index * 16}` : ""
             }`;
 
-            // On mobile, render without animation
-            if (typeof window !== "undefined" && window.innerWidth < 768) {
+            // Render without animation for mobile
+            if (isMobile) {
               return (
                 <div
-                  suppressHydrationWarning
                   key={card.value}
-                  className={"bg-black min-w-[85vw] sm:min-w-[400px] md:min-w-full h-[300px] flex flex-col justify-center px-8 pt-8 pb-16 snap-center"}
+                  className={cardClasses}
                 >
                   <h3 className="text-6xl md:text-7xl font-thin mb-4">
                     {card.value}
@@ -72,7 +90,7 @@ export default function EnhancedParallaxCards() {
               );
             }
 
-            // On desktop, keep the animation
+            // Render with animation for desktop
             return (
               <motion.div
                 key={card.value}
