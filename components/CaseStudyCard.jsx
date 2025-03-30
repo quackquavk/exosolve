@@ -35,7 +35,7 @@ export default function CaseStudyCard({
       {/* Content Container */}
       <div className=" inset-0 flex flex-col justify-between">
         {/* Top Section */}
-        <div className="flex items-start justify-between space-x-4 mt-2">
+        {/* <div className="flex items-start justify-between space-x-4 mt-2">
           <Image
             src={companyLogo}
             alt="company logo"
@@ -46,7 +46,7 @@ export default function CaseStudyCard({
           <span className="text-white/90 text-sm tracking-wide uppercase font-bold">
             {category}
           </span>
-        </div>
+        </div> */}
 
         {/* Bottom Section */}
         <div className="space-y-3 mt-5 ">

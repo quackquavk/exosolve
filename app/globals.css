@@ -4,6 +4,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
+@font-face {
+  font-family: "AvertaStd-Regular";
+  src: url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.eot");
+  src: url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.svg#AvertaStd-Regular")format("svg");
+}
+
 :root {
   /* Standard widths */
   --max-width-desktop: 1280px;  /* equivalent to max-w-7xl */
@@ -51,6 +62,7 @@ parallax {
 
 body{
   overflow-x: hidden;
+  font-family: AvertaStd-Regular, sans-serif;
 }
 
 @layer utilities{
@@ -65,5 +77,14 @@ body{
   }
   .green-text{
     @apply text-[#4ade80] font-thin
+  }
+  .green-bg{
+    @apply bg-[#4ade80]
+  }
+  .green-border{
+    @apply border-[#4ade80]
+  }
+  .green-border-hover{
+    @apply border-[#4ade80] hover:border-[#4ade80]
   }
 }

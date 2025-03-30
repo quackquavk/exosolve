@@ -13,13 +13,13 @@ export default function EnhancedParallaxCards() {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     // Check immediately
     checkIfMobile();
-    
+
     // Add event listener for window resize
     window.addEventListener("resize", checkIfMobile);
-    
+
     // Clean up event listener
     return () => {
       window.removeEventListener("resize", checkIfMobile);
@@ -56,14 +56,12 @@ export default function EnhancedParallaxCards() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-20">
           <div>
             <h2 className="heading-text font-thin mb-4">
-              Enjoy{" "}
-              <span className="green-text">tangible results</span>
+              Enjoy <span className="green-text">tangible results</span>
             </h2>
           </div>
           <div>
             <p className="text-lg md:text-xl text-gray-300 font-thin">
-              Over the years we've created a unique process that delivers
-              exceptional results with blazing-fast efficiency.
+              We've built a proven system to get you hired—fast and effectively.
             </p>
           </div>
         </div>
@@ -78,10 +76,7 @@ export default function EnhancedParallaxCards() {
             // Render without animation for mobile
             if (isMobile) {
               return (
-                <div
-                  key={card.value}
-                  className={cardClasses}
-                >
+                <div key={card.value} className={cardClasses}>
                   <h3 className="text-6xl md:text-7xl font-thin mb-4">
                     {card.value}
                   </h3>

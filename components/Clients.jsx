@@ -25,7 +25,7 @@ export default function Clients() {
         }}
       >
         <h2 className="heading-text mb-8 md:mb-16  text-left">
-          Check out our <span className="green-text">clients' words</span>
+          Check out our <span className="green-text">students' words</span>
         </h2>
 
         {/* Mobile view: horizontal scrolling */}

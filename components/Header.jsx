@@ -12,13 +12,13 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const { isScrollSectionActive } = useScroll();
 
-  const menuItems = [
-    { key: "services", label: "Services" },
-    { key: "industries", label: "Industries" },
-    { key: "clients", label: "Clients" },
-    { key: "about-us", label: "About us" },
-    { key: "insights", label: "Insights" },
-  ]
+  // const menuItems = [
+  //   { key: "services", label: "Services" },
+  //   { key: "industries", label: "Industries" },
+  //   { key: "clients", label: "Clients" },
+  //   { key: "about-us", label: "About us" },
+  //   { key: "insights", label: "Insights" },
+  // ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +62,7 @@ export default function Header() {
               </Link>
             </div>
 
-            <nav className="hidden md:flex items-center space-x-8 transition-all duration-300">
+            {/* <nav className="hidden md:flex items-center space-x-8 transition-all duration-300">
               {menuItems.map((item) => (
                 <div key={item.key} className="relative transition-all duration-300" onMouseEnter={() => handleMouseEnter(item.key)}>
                   <Link
@@ -75,7 +75,7 @@ export default function Header() {
                   </Link>
                 </div>
               ))}
-            </nav>
+            </nav> */}
 
             <Link
               href="#contact"

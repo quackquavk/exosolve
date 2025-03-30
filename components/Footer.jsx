@@ -86,6 +86,7 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex">
                 <input 
+                suppressHydrationWarning
                   type="email" 
                   placeholder="Your email" 
                   className="bg-[#1e2124] text-white px-4 py-3 flex-grow border-0 focus:ring-0 focus:outline-none"

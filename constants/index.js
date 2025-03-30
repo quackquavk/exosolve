@@ -212,7 +212,7 @@ export const megaMenuData = {
 export const testimonials = [
   {
     logo: "https://www.netguru.com/hubfs/_N23/assets/logos/keller-williams.svg",
-    text: "Exosolve has been the best recruitment agency we've worked with so far. They quickly provided us with highly skilled Java developers who integrated seamlessly into our team.",
+    text: "I can't think of a better recipe for tech interview success than combining the Exosolve program with hard work. The program made my prep much more effective and eliminated surprises from the interview process.",
     author: {
       name: "Adi Pavlovic",
       title: "Director of Innovation",
@@ -222,7 +222,7 @@ export const testimonials = [
   },
   {
     logo: "https://www.netguru.com/hubfs/_N23/assets/logos/total-processing.svg",
-    text: "Exosolve excels in both quality and speed. They provided us with exceptional full stack engineers faster than any other agency we've used.",
+    text: "Exosolve is like a fitness coach which guides to achieve your dream job. It can help you identify your weak points and also suggest steps to improve them.",
     author: {
       name: "Mark Greiner",
       title: "Digital Innovation Manager",
@@ -232,7 +232,7 @@ export const testimonials = [
   },
   {
     logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg",
-    text: "Time to hire is crucial for us, and Exosolve consistently delivers top-tier Java developers and full stack engineers faster than expected.",
+    text: "The course was very intense. During the two months it lasted, I would easily work 2+ hours every day, weekends included, on the homework problems. This course is just practice, practice, practice. And it works! Fast forward a couple of weeks, and I accepted my offer with Facebook.",
     author: {
       name: "John Doe",
       title: "HR Manager",
@@ -252,7 +252,7 @@ export const testimonials = [
   },
   {
     logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg",
-    text: "Exosolve's candidates are of the highest quality. Every engineer they've placed with us has exceeded our expectations.",
+    text: "I can't think of a better recipe for tech interview success than combining the Exosolve program with hard work. The program made my prep much more effective and eliminated surprises from the interview process.",
     author: {
       name: "Jane Smith",
       title: "CTO",
@@ -262,7 +262,7 @@ export const testimonials = [
   },
   {
     logo: "https://www.netguru.com/hubfs/_N23/assets/logos/candis.svg",
-    text: "The team at Exosolve provided exceptional support throughout the recruitment process, ensuring we found the perfect fit for our needs.",
+    text: "Each instructor-led session was packed with information and there were lots of problems to practice. The course was intense, but it was a great use of my time.",
     author: {
       name: "Michael Johnson",
       title: "Hiring Manager",
@@ -326,19 +326,16 @@ export const cardData = [
   {
     value: "99%",
     description:
-      "faster teacher guide creation process – from 4 hours to 45 sec",
+      "Salary hike range for candidates who chose to level up.",
   },
   {
-    value: "2x",
-    description: "faster invoice approval process – cut down from 4 to 2 days",
+    value: "18",
+    description: "Highest number of offers reveived by an alum",
   },
   {
     value: "60%",
     description:
-      "more user engagement with hyper-personalization for a proptech",
-  },
-  {
-    value: "77%",
-    description: "faster page speed for a meal delivery app",
-  },
+      "Highest compensation reveived by an alum",
+  }
+ 
 ];

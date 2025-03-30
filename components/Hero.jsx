@@ -81,7 +81,7 @@ const Hero = () => {
             custom={0}
             style={{ transformOrigin: "bottom" }}
           >
-            Connect
+            Nail 
           </motion.span>{" "}
           <motion.span
             className="text-white block"
@@ -91,7 +91,7 @@ const Hero = () => {
             custom={1}
             style={{ transformOrigin: "bottom" }}
           >
-            tech talent
+            Technical Interviews
           </motion.span>
         </h1>
 
@@ -102,7 +102,7 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
           >
-            We place top tier engineers <br /> to empower your team and drive innovation.
+            Customizable tech interview prep courses <br />designed by 500+ Tier-1 instructors and mentors.
           </motion.p>
 
           <motion.div

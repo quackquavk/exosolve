@@ -40,7 +40,7 @@ export default function CTA() {
         </h2>
 
         <Button 
-          className="bg-green-400 hover:bg-green-500 text-black font-medium px-6 py-2 rounded-md transition-colors duration-200"
+          className="green-bg text-black font-medium px-6 py-2 rounded-md transition-colors duration-200"
         >
           Estimate project →
         </Button>
