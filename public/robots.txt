@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://exosolve.io
+
+# Sitemaps
+Sitemap: https://exosolve.io/sitemap.xml

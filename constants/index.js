@@ -336,6 +336,10 @@ export const cardData = [
     value: "60%",
     description:
       "Highest compensation reveived by an alum",
+  },
+  {
+    value: "8",
+    description: "Average number of offers reveived per month.",
   }
  
 ];

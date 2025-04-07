@@ -74,7 +74,7 @@ const Hero = () => {
       >
         <h1 className="text-5xl md:text-[92px] mb-20 md:mb-32 z-10 font-thin mt-30 flex flex-wrap">
           <motion.span
-            className="text-green-400 mr-4 md:mr-6 block"
+            className="green-text mr-4 md:mr-6 block"
             variants={headingVariants}
             initial="hidden"
             animate="visible"

@@ -389,8 +389,8 @@ export default function ScrollFocusSection() {
           <div className="flex flex-col justify-between h-full relative max-w-[40vw]">
             {/* Description */}
             <div className="relative h-[120px] md:h-[200px] overflow-hidden">
-              <div key={activeIndex} className="absolute w-full">
-                <p className="text-gray-300 text-base md:text-lg leading-relaxed font-thin w-full ml-auto">
+              <div key={activeIndex} className="absolute w-full md:block hidden">
+                <p className="text-gray-300 text-base md:text-lg leading-relaxed font-thin w-full ml-auto ">
                   Whether you're exploring new roles, polishing your profile,
                   landing interviews, or leveling up your skills – we support
                   you with our{" "}
